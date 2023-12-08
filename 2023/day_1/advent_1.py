@@ -1,8 +1,7 @@
 file = "input.txt"
 
 with open(file, "r") as f:
-    asdf = [i.strip() for i in f.readlines()]
-
+    input_from_file = [i.strip() for i in f.readlines()]
 
 fixs = {
     "one": ["oonee", "1"],
@@ -21,8 +20,7 @@ def fix_inputs(x):
     for k, v in fixs.items():
         if k in x:
             x = x.replace(k, fixs[k][0]).replace(k, fixs[k][1])
-    result = x
-    return result
+    return x
 
 
 def fix_three_and_longer_digits(i, j):
@@ -39,17 +37,18 @@ def fix_one_digit(i):
     return r
 
 
-wtf_stuff = [fix_inputs(i) for i in asdf]
+fixed_input = [fix_inputs(i) for i in input_from_file]
 
 
-ints_of_weird_stuff = [int("".join(filter(str.isdigit, ws))) for ws in wtf_stuff]
+ints_of_fixed_input = [int("".join(filter(str.isdigit, ws))) for ws in fixed_input]
 
 
-for ints in ints_of_weird_stuff:
+for ints in ints_of_fixed_input:
     if ints > 99:
         replace_ints = fix_three_and_longer_digits(ints, ints)
-        ints_of_weird_stuff[ints_of_weird_stuff.index(ints)] = replace_ints
+        ints_of_fixed_input[ints_of_fixed_input.index(ints)] = replace_ints
     if ints < 10:
         replace_ints = fix_one_digit(ints)
-        ints_of_weird_stuff[ints_of_weird_stuff.index(ints)] = replace_ints
-print(f"RESULT: {sum(ints_of_weird_stuff)}")
+        ints_of_fixed_input[ints_of_fixed_input.index(ints)] = replace_ints
+
+print(f"RESULT: {sum(ints_of_fixed_input)}")
