@@ -16,14 +16,15 @@ fixs = {
 }
 
 
-def fix_inputs(x):
+def replace_str_from_by_int(x):
     for k, v in fixs.items():
         if k in x:
             x = x.replace(k, fixs[k][0]).replace(k, fixs[k][1])
     return x
 
 
-def fix_three_and_longer_digits(i, j):
+def get_digit(i):
+    j = i
     while i >= 10:
         i = i / 10
     i = int(i)
@@ -32,23 +33,20 @@ def fix_three_and_longer_digits(i, j):
     return r
 
 
-def fix_one_digit(i):
+def double_digit(i):
     r = int(str(i) * 2)
     return r
 
 
-fixed_input = [fix_inputs(i) for i in input_from_file]
-
-
+fixed_input = [replace_str_from_by_int(i) for i in input_from_file]
 ints_of_fixed_input = [int("".join(filter(str.isdigit, ws))) for ws in fixed_input]
-
 
 for ints in ints_of_fixed_input:
     if ints > 99:
-        replace_ints = fix_three_and_longer_digits(ints, ints)
+        replace_ints = get_digit(ints)
         ints_of_fixed_input[ints_of_fixed_input.index(ints)] = replace_ints
     if ints < 10:
-        replace_ints = fix_one_digit(ints)
+        replace_ints = double_digit(ints)
         ints_of_fixed_input[ints_of_fixed_input.index(ints)] = replace_ints
 
 print(f"RESULT: {sum(ints_of_fixed_input)}")
