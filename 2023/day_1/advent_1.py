@@ -3,19 +3,6 @@ file = "input.txt"
 with open(file, "r") as f:
     asdf = [i.strip() for i in f.readlines()]
 
-weird_stuff = ["1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"]
-
-weird_stuff = [
-    "two1nine",
-    "eightwothree",
-    "abcone2threexyz",
-    "xtwone3four",
-    "4nineeightseven2",
-    "zoneight234",
-    "7pqrstsixteen",
-]
-
-weird_stuff = asdf
 
 fixs = {
     "one": ["oonee", "1"],
