@@ -39,14 +39,11 @@ def fix_one_digit(i):
     return r
 
 
-print(weird_stuff)
-wtf_stuff = [fix_inputs(i) for i in weird_stuff]
-print(f"Fixed input: {wtf_stuff}")
+wtf_stuff = [fix_inputs(i) for i in asdf]
 
 
 ints_of_weird_stuff = [int("".join(filter(str.isdigit, ws))) for ws in wtf_stuff]
 
-print(ints_of_weird_stuff)
 
 for ints in ints_of_weird_stuff:
     if ints > 99:
